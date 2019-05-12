@@ -16,4 +16,6 @@ for param in params:
         if ext == ".meta":
             let content = readFile(file)
             let newContent = content.replace(guidRe, replaceGuid)
-            writeFile(file, newContent)
+            let fs = newFileStream(file, fmReadWriteExisting)
+            fs.write(newContent)
+            fs.close()
